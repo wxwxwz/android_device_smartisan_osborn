@@ -419,6 +419,10 @@ PRODUCT_PACKAGES += \
 PRODUCT_BOOT_JARS += \
     telephony-ext
 
+# Tethering
+PRODUCT_PACKAGES += \
+    TetheringConfigOverlay
+
 # Tetheroffload
 PRODUCT_PACKAGES += \
     ipacm \
