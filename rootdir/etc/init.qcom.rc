@@ -734,7 +734,6 @@ service vendor.msm_irqbl_sdm630 /vendor/bin/msm_irqbalance -f /vendor/etc/msm_ir
 
 on charger
     setprop persist.sys.usb.config mass_storage
-    load_system_props
     start qcom-post-boot
 
 #Mixed HWC versions among targets
