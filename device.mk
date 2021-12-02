@@ -262,7 +262,7 @@ PRODUCT_PACKAGES += \
     init.qcom.usb.rc \
     init.target.device.rc \
     init.target.rc \
-    ueventd.rc
+    ueventd.qcom.rc
 
 # Input
 PRODUCT_COPY_FILES += \
