@@ -1,6 +1,3 @@
-[AID_VENDOR_QCOM_DIAG]
-value:2950
-
 [AID_VENDOR_QTI_DIAG]
 value:2901
 
@@ -9,6 +6,9 @@ value:2903
 
 [AID_VENDOR_RFS_SHARED]
 value:2904
+
+[AID_VENDOR_THERMAL]
+value:2907
 
 [vendor/bin/wcnss_filter]
 mode: 0755
@@ -29,6 +29,18 @@ group: AID_BLUETOOTH
 caps: BLOCK_SUSPEND NET_ADMIN
 
 [system/vendor/bin/hw/android.hardware.bluetooth@1.0-service-qti]
+mode: 0755
+user: AID_SYSTEM
+group: AID_SYSTEM
+caps: BLOCK_SUSPEND NET_ADMIN
+
+[vendor/bin/hw/android.hardware.bluetooth@1.0-service-qti-lazy]
+mode: 0755
+user: AID_BLUETOOTH
+group: AID_BLUETOOTH
+caps: BLOCK_SUSPEND NET_ADMIN
+
+[system/vendor/bin/hw/android.hardware.bluetooth@1.0-service-qti-lazy]
 mode: 0755
 user: AID_SYSTEM
 group: AID_SYSTEM
@@ -147,3 +159,21 @@ mode: 0755
 user:  AID_GPS
 group: AID_GPS
 caps: NET_BIND_SERVICE BLOCK_SUSPEND WAKE_ALARM
+
+[vendor/bin/sensors.qti]
+mode: 0755
+user: AID_SYSTEM
+group: AID_SYSTEM
+caps: NET_BIND_SERVICE
+
+[firmware/image/*]
+mode: 0771
+user: AID_SYSTEM
+group: AID_SYSTEM
+caps: 0
+
+[vendor/firmware_mnt/image/*]
+mode: 0771
+user: AID_SYSTEM
+group: AID_SYSTEM
+caps: 0
