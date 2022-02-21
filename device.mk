@@ -302,6 +302,13 @@ PRODUCT_PACKAGES += \
 PRODUCT_PACKAGES += \
     vendor.lineage.livedisplay@2.0-service-sdm
 
+# Logic_data
+PRODUCT_PACKAGES += \
+    dm-tool.recovery \
+    logic_volume.recovery \
+    init.recovery.qcom.rc \
+    init.recovery.usb.rc
+
 # Low power Whitelist
 PRODUCT_PACKAGES += \
     $(LOCAL_PATH)/configs/qti_whitelist.xml:system/etc/sysconfig/qti_whitelist.xml
