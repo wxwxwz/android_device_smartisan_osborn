@@ -252,7 +252,6 @@ PRODUCT_PACKAGES += \
     init.crda.sh \
     init.mdm.sh \
     init.qcom.sh \
-    init.qcom.early_boot.sh \
     init.qcom.post_boot.sh \
     init.qcom.sensors.sh \
     init.qcom.ssr.sh \
