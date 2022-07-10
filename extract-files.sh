@@ -71,9 +71,6 @@ extract "$MY_DIR"/proprietary-files.txt "$SRC" \
 extract "$MY_DIR"/proprietary-files-qc.txt "$SRC" \
      "${KANG}" --section "${SECTION}"
 
-extract "$MY_DIR"/proprietary-files-qc-perf.txt "$SRC" \
-     "${KANG}" --section "${SECTION}"
-
 BLOB_ROOT="$LINEAGE_ROOT"/vendor/"$VENDOR"/"$DEVICE"/proprietary
 
 # Audio

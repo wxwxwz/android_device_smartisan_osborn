@@ -326,18 +326,6 @@ vendor/lib64/vendor.display.color@1.1.so
 vendor/lib64/vendor.display.postproc@1.0.so
 vendor/lib64/vendor.qti.hardware.qdutils_disp@1.0.so
 
-# IOP
-lib/vendor.qti.hardware.iop@1.0.so
-lib/vendor.qti.hardware.iop@2.0.so
-lib64/vendor.qti.hardware.iop@1.0.so
-lib64/vendor.qti.hardware.iop@2.0.so
-vendor/lib/hw/vendor.qti.hardware.iop@2.0-impl.so
-vendor/lib/vendor.qti.hardware.iop@1.0.so
-vendor/lib/vendor.qti.hardware.iop@2.0.so
-vendor/lib64/hw/vendor.qti.hardware.iop@2.0-impl.so
-vendor/lib64/vendor.qti.hardware.iop@1.0.so
-vendor/lib64/vendor.qti.hardware.iop@2.0.so
-
 # Keystore
 vendor/lib/hw/keystore.sdm660.so
 vendor/lib64/hw/keystore.sdm660.so
@@ -424,15 +412,27 @@ vendor/lib64/libvpplibrary.so
 vendor/lib64/libvpptestutils.so
 vendor/lib64/vendor.qti.hardware.vpp@1.1.so
 
-# Perf
-lib/libqti-perfd-client_system.so
-lib/libqti_performance.so
-lib/vendor.qti.hardware.perf@1.0.so
-lib64/libqti-perfd-client_system.so
-lib64/libqti_performance.so
-lib64/vendor.qti.hardware.perf@1.0.so
+# Perf - from platina
 vendor/bin/energy-awareness
 vendor/bin/msm_irqbalance
+vendor/bin/hw/vendor.qti.hardware.perf@1.0-service
+vendor/etc/init/vendor.qti.hardware.perf@1.0-service.rc
+vendor/etc/perf/perfboostsconfig.xml
+vendor/lib/libqti-perfd-client.so
+vendor/lib/libqti-perfd.so
+vendor/lib/libqti-util.so
+vendor/lib/vendor.qti.hardware.perf@1.0.so
+vendor/lib64/libperfgluelayer.so
+vendor/lib64/libqti-perfd-client.so
+vendor/lib64/libqti-perfd.so
+vendor/lib64/libqti-util.so
+vendor/lib64/vendor.qti.hardware.perf@1.0.so
+
+# Perf - from jasmine V11.0.17.0.QDIMIXM
+vendor/etc/perf/commonresourceconfigs.xml|1db765e3a8fb902bdb648091178a709c34f3fb16
+vendor/etc/perf/perfconfigstore.xml|760248b82c4f1ad8b0e7ed1924d2b198229e118d
+vendor/etc/perf/targetconfig.xml|376ae331df9d6c30b6208f25d04ae4ea11c0e2ea
+vendor/etc/perf/targetresourceconfigs.xml|7132f1e9ce3bb21b4854b81d6e5d24409251f177
 
 # Peripheral manager
 vendor/bin/pm-proxy
