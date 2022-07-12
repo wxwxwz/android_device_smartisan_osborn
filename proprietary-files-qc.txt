@@ -188,9 +188,9 @@ vendor/lib64/vendor.qti.hardware.tui_comm@1.0.so
 # DRM - Widevine
 vendor/bin/hw/android.hardware.drm@1.1-service.widevine
 vendor/etc/init/android.hardware.drm@1.1-service.widevine.rc
-vendor/lib/mediadrm/libwvdrmengine.so
+vendor/lib/mediadrm/libwvdrmengine.so|2790697ff458d08a936cbde94a60e7bf298f791a
 vendor/lib64/libwvhidl.so
-vendor/lib64/mediadrm/libwvdrmengine.so
+vendor/lib64/mediadrm/libwvdrmengine.so|ed1f23f69755b2823815df3a520ddda656f49e75
 
 # ESE-Powermanager
 lib/vendor.qti.esepowermanager@1.0.so
