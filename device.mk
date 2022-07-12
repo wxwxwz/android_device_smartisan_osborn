@@ -217,6 +217,10 @@ PRODUCT_PACKAGES += \
 PRODUCT_PACKAGES += \
     android.hardware.biometrics.fingerprint@2.1-service.osborn
 
+# fwk-detect
+PRODUCT_PACKAGES += \
+    libqti_vndfwk_detect
+
 # Gatekeeper
 PRODUCT_PACKAGES += \
     android.hardware.gatekeeper@1.0-impl \
