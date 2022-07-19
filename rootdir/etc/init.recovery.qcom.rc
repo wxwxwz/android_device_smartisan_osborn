@@ -37,7 +37,7 @@ on fs
     start logic_volume
     wait /dev/block/logic_data
 
-service logic_volume /sbin/logic_volume -m striped -r 2:3 -c 256
+service logic_volume /system/bin/logic_volume -f /system/etc/logic_volume.conf
     disabled
     oneshot
     user root

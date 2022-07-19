@@ -300,8 +300,11 @@ PRODUCT_PACKAGES += \
 PRODUCT_PACKAGES += \
     dm-tool \
     logic_volume \
+    logic_volume.conf \
+    logic_volume.rc \
     dm-tool.recovery \
-    logic_volume.recovery
+    logic_volume.recovery \
+    logic_volume.conf.recovery
 
 # Low power Whitelist
 PRODUCT_PACKAGES += \
