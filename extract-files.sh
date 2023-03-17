@@ -36,7 +36,27 @@ fi
 # Default to sanitizing the vendor folder before extraction
 CLEAN_VENDOR=true
 
-SRC=$1
+SECTION=
+KANG=
+
+while [ "${#}" -gt 0 ]; do
+     case "${1}" in
+         -n | --no-cleanup )
+             CLEAN_VENDOR=false
+             ;;
+         -k | --kang )
+                 KANG="--kang"
+                 ;;
+         -s | --section )
+                 SECTION="${2}"; shift
+                 CLEAN_VENDOR=false
+                 ;;
+         * )
+                 SRC="${1}"
+                 ;;
+     esac
+     shift
+ done
 
 if [ -z "$SRC" ]; then
     SRC=adb
@@ -45,9 +65,14 @@ fi
 # Initialize the helper
 setup_vendor "$DEVICE" "$VENDOR" "$LINEAGE_ROOT" true "$CLEAN_VENDOR"
 
-extract "$MY_DIR"/proprietary-files.txt "$SRC" "$SECTION"
-extract "$MY_DIR"/proprietary-files-qc.txt "$SRC" "$SECTION"
-extract "$MY_DIR"/proprietary-files-qc-perf.txt "$SRC" "$SECTION"
+extract "$MY_DIR"/proprietary-files.txt "$SRC" \
+     "${KANG}" --section "${SECTION}"
+
+extract "$MY_DIR"/proprietary-files-qc.txt "$SRC" \
+     "${KANG}" --section "${SECTION}"
+
+extract "$MY_DIR"/proprietary-files-qc-perf.txt "$SRC" \
+     "${KANG}" --section "${SECTION}"
 
 BLOB_ROOT="$LINEAGE_ROOT"/vendor/"$VENDOR"/"$DEVICE"/proprietary
 
