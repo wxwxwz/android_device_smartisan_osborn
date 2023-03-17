@@ -21,7 +21,7 @@
 # definition file).
 #
 
-$(call inherit-product, vendor/smartisan/sdm660-common/sdm660-common-vendor.mk)
+$(call inherit-product, vendor/smartisan/osborn/osborn-vendor.mk)
 
 # Overlays
 DEVICE_PACKAGE_OVERLAYS += \
@@ -192,7 +192,7 @@ PRODUCT_PACKAGES += \
 
 # Fingerprint feature
 PRODUCT_PACKAGES += \
-    android.hardware.biometrics.fingerprint@2.1-service.smartisan
+    android.hardware.biometrics.fingerprint@2.1-service.osborn
 
 # PRODUCT_PACKAGES += \
 #     SmartisanPocketMode
@@ -253,7 +253,7 @@ PRODUCT_PACKAGES += \
 
 # Lights
 PRODUCT_PACKAGES += \
-    android.hardware.light@2.0-service.smartisan
+    android.hardware.light@2.0-service.osborn
 
 # LiveDisplay
 PRODUCT_PACKAGES += \
