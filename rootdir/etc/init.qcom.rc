@@ -139,10 +139,6 @@ on boot
     #enable camera read sensors data
     setprop persist.camera.gyro.disable 0
 
-    #Remove SUID bit for iproute2 ip tool
-    chmod 0755 /system/bin/ip
-
-
     chmod 0444 /sys/devices/platform/msm_hsusb/gadget/usb_state
 
 #   Define TCP buffer sizes for various networks
@@ -403,39 +399,8 @@ on post-fs-data
     #Start move time data to /data/vendor once post-fs-data done
     start vendor.move_time_data
 
-service nqnfcinfo /vendor/bin/nqnfcinfo
-    class late_start
-    group nfc
-    user system
-    oneshot
-
-service iop /vendor/bin/iop
-    class main
-    user root
-    group root
-    disabled
-    socket iop seqpacket 0666 root system
-
-service qcomsysd /vendor/bin/qcom-system-daemon
-    class main
-    user root
-    group root diag
-    disabled
-
-on property:persist.vendor.qcomsysd.enabled=1
-    enable qcomsysd
-
-on property:persist.vendor.qcomsysd.enabled=0
-    stop qcomsysd
-
 service vendor.ssr_setup /vendor/bin/ssr_setup
     oneshot
-    disabled
-
-service vendor.ss_ramdump /vendor/bin/subsystem_ramdump
-    class main
-    user system
-    group system
     disabled
 
 on property:persist.vendor.sys.ssr.enable_debug=*
@@ -456,7 +421,6 @@ on property:persist.vendor.ssr.restart_level=*
 on property:persist.vendor.ssr.enable_ramdumps=1
     write /sys/module/subsystem_restart/parameters/enable_ramdumps 1
     mkdir /data/vendor/ramdump_ssr 770 system system
-    start vendor.ss_ramdump
 
 on property:persist.vendor.ssr.enable_ramdumps=0
     write /sys/module/subsystem_restart/parameters/enable_ramdumps 0
@@ -475,35 +439,8 @@ on property:persist.debug.trace=1
     mkdir /data/core 0777 root root
     write /proc/sys/kernel/core_pattern "/data/core/%E.%p.%e"
 
-on property:init.svc.wpa_supplicant=stopped
-    stop dhcpcd
-
-on property:vendor.bluetooth.sap.status=running
-    start vendor.bt-sap
-
-on property:vendor.bluetooth.sap.status=stopped
-    stop vendor.bt-sap
-
-on property:vendor.bluetooth.dun.status=running
-    start vendor.bt-dun
-
-on property:vendor.bluetooth.dun.status=stopped
-    stop vendor.bt-dun
-
 on property:ro.bluetooth.ftm_enabled=true
     start ftmd
-
-on property:vendor.bluetooth.startbtsnoop=true
-    start vendor.btsnoop
-
-on property:vendor.bluetooth.startbtsnoop=false
-    stop vendor.btsnoop
-
-on property:vendor.bluetooth.startbtlogger=true
-    start vendor.bt_logger
-
-on property:vendor.bluetooth.startbtlogger=false
-    stop vendor.bt_logger
 
 service qcom-c_main-sh /vendor/bin/init.class_main.sh
     class main
@@ -556,33 +493,6 @@ service vendor.start_hci_filter /vendor/bin/wcnss_filter
     seclabel u:r:bluetooth:s0
     disabled
 
-service vendor.bt-dun /system/bin/dun-server /dev/smd7 /dev/rfcomm0
-    class late_start
-    user bluetooth
-    group bluetooth net_bt_admin inet
-    disabled
-    oneshot
-
-service bt-sap /system/bin/sapd 15
-    user bluetooth
-    group bluetooth net_bt_admin
-    class late_start
-    disabled
-    oneshot
-
-service vendor.btsnoop /system/bin/btsnoop
-   user bluetooth
-   group bluetooth net_bt_admin sdcard_rw sdcard_r media_rw
-   class late_start
-   disabled
-   oneshot
-
-service vendor.bt_logger /system/bin/bt_logger
-   user bluetooth
-   group bluetooth net_bt_admin sdcard_rw sdcard_r media_rw
-   class late_start
-   disabled
-   oneshot
 
 service ftmd /system/bin/logwrapper /system/bin/ftmdaemon
     class late_start
@@ -597,19 +507,6 @@ service vendor.port-bridge /vendor/bin/port-bridge
     group radio system inet
     disabled
     oneshot
-
-service qmiproxy /system/bin/qmiproxy
-    class main
-    user radio
-    group radio diag
-    disabled
-
-# QMUX must be in multiple groups to support external process connections
-service vendor.qmuxd /vendor/bin/qmuxd
-    class main
-    user root
-    group radio audio bluetooth gps nfc diag
-    disabled
 
 service vendor.netmgrd /vendor/bin/netmgrd
     class main
@@ -645,24 +542,6 @@ on property:ro.data.large_tcp_window_size=true
 
 on property:sys.sysctl.tcp_adv_win_scale=*
     write /proc/sys/net/ipv4/tcp_adv_win_scale ${sys.sysctl.tcp_adv_win_scale}
-
-service amp_init /vendor/bin/amploader -i
-    class late_start
-    user root
-    disabled
-    oneshot
-
-service amp_load /vendor/bin/amploader -l 7000
-    class late_start
-    user root
-    disabled
-    oneshot
-
-service amp_unload /vendor/bin/amploader -u
-    class late_start
-    user root
-    disabled
-    oneshot
 
 service wpa_supplicant /vendor/bin/hw/wpa_supplicant \
     -O/data/vendor/wifi/wpa/sockets -puse_p2p_group_interface=1 \
@@ -717,84 +596,8 @@ on property:netd.fstman.start=true
 on property:netd.fstman.start=false
     stop fstman
 
-service wigighalsvc /vendor/bin/wigighalsvc
-    class main
-    user system
-    group wifi
-    disabled
-
-service wigignpt /vendor/bin/wigignpt
-    class main
-    socket wigignpt stream 660 system wifi
-    user system
-    group wifi net_admin
-    disabled
-
 on property:persist.vendor.wigig.enable=1
     insmod /vendor/lib/modules/wil6210.ko alt_ifname=1
-    start wigighalsvc
-
-on property:persist.vendor.wigig.npt.enable=1
-    start wigignpt
-
-service dhcpcd_wlan0 /system/bin/dhcpcd -ABKLG
-    class late_start
-    disabled
-    oneshot
-
-service dhcpcd_bond0 /system/bin/dhcpcd -ABKLG
-    class late_start
-    disabled
-    oneshot
-
-service dhcpcd_p2p /system/bin/dhcpcd -ABKLG
-    class late_start
-    disabled
-    oneshot
-
-service dhcpcd_wigig0 /system/bin/dhcpcd -ABKLG
-    class late_start
-    disabled
-    oneshot
-
-service iprenew_wlan0 /system/bin/dhcpcd -n
-    class late_start
-    disabled
-    oneshot
-
-service iprenew_bond0 /system/bin/dhcpcd -n
-    class late_start
-    disabled
-    oneshot
-
-service iprenew_p2p /system/bin/dhcpcd -n
-    class late_start
-    disabled
-    oneshot
-
-service iprenew_wigig0 /system/bin/dhcpcd -n
-    class late_start
-    disabled
-    oneshot
-
-service ptt_socket_app /vendor/bin/ptt_socket_app -d
-    class main
-    user root
-    group root
-    oneshot
-
-service ptt_ffbm /vendor/bin/ptt_socket_app -f -d
-    user root
-    group root
-    disabled
-    oneshot
-
-service wifi_ftmd /vendor/bin/wifi_ftmd
-    user system
-    group system inet net_admin
-    socket wififtmd_server dgram 0660 system system
-    disabled
-    oneshot
 
 on property:vendor.wifi.ftmd.load=true
     insmod /system/lib/modules/pronto/pronto_wlan.ko con_mode=5
@@ -815,48 +618,6 @@ service cnss-daemon /vendor/bin/cnss-daemon -n -l
 on property:sys.powerctl=*
     stop cnss-daemon
 
-service dhcpcd_bt-pan /system/bin/dhcpcd -BKLG
-    class late_start
-    disabled
-    oneshot
-
-service iprenew_bt-pan /system/bin/dhcpcd -n
-    class late_start
-    disabled
-    oneshot
-
-service dhcpcd_bnep0 /system/bin/dhcpcd -BKLG
-    disabled
-    oneshot
-
-service dhcpcd_bnep1 /system/bin/dhcpcd -BKLG
-    disabled
-    oneshot
-
-service dhcpcd_bnep2 /system/bin/dhcpcd -BKLG
-    disabled
-    oneshot
-
-service dhcpcd_bnep3 /system/bin/dhcpcd -BKLG
-    disabled
-    oneshot
-
-service dhcpcd_bnep4 /system/bin/dhcpcd -BKLG
-    disabled
-    oneshot
-
-service ssgqmigd /vendor/bin/ssgqmigd
-    class late_start
-    user radio
-    group radio
-    socket ssgqmig seqpacket 0660 radio inet
-
-service mlid /vendor/bin/mlid
-    class late_start
-    user gps
-    group gps
-    socket mlid stream 0666 gps gps
-
 service loc_launcher /vendor/bin/loc_launcher
     class late_start
     user gps
@@ -865,18 +626,6 @@ service loc_launcher /vendor/bin/loc_launcher
 on property:crypto.driver.load=1
      insmod /system/lib/modules/qce.ko
      insmod /system/lib/modules/qcedev.ko
-
-service drmdiag /vendor/bin/drmdiagapp
-    class late_start
-     user root
-     disabled
-     oneshot
-
-on property:drmdiag.load=1
-    start drmdiag
-
-on property:drmdiag.load=0
-    stop drmdiag
 
 service qcom-sh /vendor/bin/init.qcom.sh
     class late_start
@@ -928,22 +677,9 @@ service vendor.wigig_hostapd /vendor/bin/hostapd -dd /data/vendor/wifi/wigig_hos
     oneshot
     disabled
 
-service ims_regmanager /vendor/bin/exe-ims-regmanagerprocessnative
-    class late_start
-    group net_bt_admin inet radio wifi
-    disabled
-
-on property:persist.ims.regmanager.mode=1
-    start ims_regmanager
-
 on property:ro.data.large_tcp_window_size=true
     # Adjust socket buffer to enlarge TCP receive window for high bandwidth (e.g. DO-RevB)
     write /proc/sys/net/ipv4/tcp_adv_win_scale  2
-
-service battery_monitor /system/bin/battery_monitor
-    user system
-    group system
-    disabled
 
 service vendor.ril-daemon2 /vendor/bin/hw/rild -c 2
     class main
@@ -959,12 +695,6 @@ service vendor.ril-daemon3 /vendor/bin/hw/rild -c 3
     group radio cache inet misc audio sdcard_r sdcard_rw diag oem_2901 log
     capabilities BLOCK_SUSPEND NET_ADMIN NET_RAW
 
-service profiler_daemon /system/bin/profiler_daemon
-    class late_start
-    user root
-    group root
-    disabled
-
 service charger /charger
     class charger
     group system graphics
@@ -974,22 +704,6 @@ service vendor.ssr_diag /vendor/bin/ssr_diag
     class late_start
     user system
     group system
-    disabled
-
-service hvdcp /system/bin/hvdcp
-    class core
-    user root
-    disabled
-
-on property:persist.usb.hvdcp.detect=true
-    start hvdcp
-
-on property:persist.usb.hvdcp.detect=false
-    stop hvdcp
-
-service charger_monitor /system/bin/charger_monitor
-    user root
-    group root
     disabled
 
 service qbcharger /charger -m 1
@@ -1016,20 +730,6 @@ service diag_mdlog_stop /vendor/bin/diag_mdlog -k
     disabled
     oneshot
 
-service qlogd /system/xbin/qlogd
-    socket qlogd stream 0662 system system
-    class main
-    disabled
-on property:persist.sys.qlogd=1
-    start qlogd
-on property:persist.sys.qlogd=0
-    stop qlogd
-
-service vm_bms /vendor/bin/vm_bms
-    user root
-    group root
-    disabled
-
 service vendor.msm_irqbalance /vendor/bin/msm_irqbalance -f /vendor/etc/msm_irqbalance.conf
     class core
     user root
@@ -1048,44 +748,10 @@ service vendor.msm_irqbl_sdm630 /vendor/bin/msm_irqbalance -f /vendor/etc/msm_ir
     group root
     disabled
 
-# service for USERDEBUG
-service vendor.LKCore-dbg /vendor/bin/LKCore
-    class late_start
-    oneshot
-    disabled
-    user root
-    group root system log diag net_raw
-
-# service for USER
-service vendor.LKCore-rel /vendor/bin/LKCore
-    class late_start
-    oneshot
-    disabled
-    user system
-    group system log diag
-
-service qseeproxydaemon /vendor/bin/qseeproxydaemon
-    class late_start
-    user system
-    group system
-
-service esepmdaemon /vendor/bin/esepmdaemon
-    class core
-    user system
-    group nfc
-
 on charger
     setprop persist.sys.usb.config mass_storage
     load_system_props
     start qcom-post-boot
-
-#add poweroffhandler
-service poweroffhandler /vendor/bin/poweroffhandler
-    class core
-    user media
-    group graphics audio
-    disabled
-    oneshot
 
 #Mixed HWC versions among targets
 on property:init.svc.surfaceflinger=restarting
@@ -1093,35 +759,6 @@ on property:init.svc.surfaceflinger=restarting
     stop  vendor.hwcomposer-2-2
     start vendor.hwcomposer-2-1
     start vendor.hwcomposer-2-2
-
-# Logcat dump daemon, dumps logs to logdump partition
-#service logdumpd /system/bin/logcat -b all -v threadtime -D -w /dev/block/bootdevice/by-name/logdump
-#    class core
-#    writepid /dev/cpuset/system-background/tasks
-#    seclabel u:r:logdumpd:s0
-#    disabled
-
-# Logdumpd is enabled only for userdebug non-perf build
-#on property:ro.logdumpd.enabled=1
-#    start logdumpd
-
-on property:vendor.display.lcd_density=*
-    setprop ro.sf.lcd_density ${vendor.display.lcd_density}
-
-service time_daemon /vendor/bin/time_daemon
-    class main
-    user root
-    group root
-
-service qdmastatsd /vendor/bin/qdmastatsd
-    class late_start
-    user system
-    group readproc system net_bw_stats radio
-
-service vendor.vppservice /vendor/bin/vppservice
-    class main
-    user media
-    group camera
 
 service chre /vendor/bin/chre
     class late_start
@@ -1136,11 +773,6 @@ on property:vendor.rild.libpath=*
 
 on property:ro.vendor.radio.noril=*
     setprop ro.radio.noril ${ro.vendor.radio.noril}
-
-service seemp_healthd /vendor/bin/seemp_healthd
-    class late_start
-    user system
-    group system
 
 service vendor.power_off_alarm /vendor/bin/power_off_alarm
     class core
