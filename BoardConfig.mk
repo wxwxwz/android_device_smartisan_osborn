@@ -60,7 +60,7 @@ BOARD_KERNEL_IMAGE_NAME := Image.gz-dtb
 TARGET_KERNEL_ARCH := arm64
 TARGET_KERNEL_HEADER_ARCH := arm64
 TARGET_KERNEL_SOURCE := kernel/smartisan/sdm660
-TARGET_KERNEL_CONFIG := lineage_osborn_defconfig
+TARGET_KERNEL_CONFIG := osborn_defconfig
 
 # HAX: SELinux Permissive - Remove ASAP
 BOARD_KERNEL_CMDLINE += androidboot.selinux=permissive
