@@ -32,6 +32,9 @@ DEVICE_PACKAGE_OVERLAYS += \
 PRODUCT_SOONG_NAMESPACES += \
     $(LOCAL_PATH)
 
+# Properties
+include $(LOCAL_PATH)/properties.mk
+
 # Permissions
 PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/configs/privapp-permissions-qti.xml:system/etc/permissions/privapp-permissions-qti.xml
@@ -89,19 +92,6 @@ TARGET_SCREEN_WIDTH := 1080
 
 # Override heap growth limit due to high display density on device
 $(call inherit-product, frameworks/native/build/phone-xhdpi-4096-dalvik-heap.mk)
-
-PRODUCT_PROPERTY_OVERRIDES += \
-    ro.vendor.extension_library=libqti-perfd-client.so \
-    persist.vendor.radio.apm_sim_not_pwdn=1 \
-    persist.vendor.radio.custom_ecc=1 \
-    persist.vendor.radio.sib16_support=1 \
-    persist.vendor.radio.rat_on=combine \
-    persist.radio.schd.cache=3500 \
-    sys.vendor.shutdown.waittime=500 \
-    ro.build.shutdown_timeout=0
-
-PRODUCT_PROPERTY_OVERRIDES += \
-    ro.frp.pst=/dev/block/bootdevice/by-name/frp
 
 # Haters gonna hate..
 PRODUCT_CHARACTERISTICS := nosdcard
