@@ -268,6 +268,8 @@ PRODUCT_PACKAGES += \
     init.msm.usb.configfs.rc \
     init.qcom.rc \
     init.qcom.usb.rc \
+    init.recovery.qcom.rc \
+    init.recovery.usb.rc \
     init.target.device.rc \
     init.target.rc \
     ueventd.qcom.rc
@@ -306,10 +308,10 @@ PRODUCT_PACKAGES += \
 
 # Logic_data
 PRODUCT_PACKAGES += \
+    dm-tool \
+    logic_volume \
     dm-tool.recovery \
-    logic_volume.recovery \
-    init.recovery.qcom.rc \
-    init.recovery.usb.rc
+    logic_volume.recovery
 
 # Low power Whitelist
 PRODUCT_PACKAGES += \
