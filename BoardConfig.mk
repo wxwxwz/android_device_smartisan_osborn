@@ -161,6 +161,9 @@ DEVICE_FRAMEWORK_MANIFEST_FILE := $(DEVICE_PATH)/framework_manifest.xml
 DEVICE_MANIFEST_FILE := $(DEVICE_PATH)/manifest.xml
 DEVICE_MATRIX_FILE := $(DEVICE_PATH)/compatibility_matrix.xml
 
+# Includes
+TARGET_SPECIFIC_HEADER_PATH := $(DEVICE_PATH)/include
+
 # Init
 TARGET_INIT_VENDOR_LIB := //$(DEVICE_PATH):libinit_sdm660
 TARGET_PLATFORM_DEVICE_BASE := /devices/soc0/
