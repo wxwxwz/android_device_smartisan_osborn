@@ -304,7 +304,6 @@ vendor/lib64/librs_adreno.so
 vendor/lib64/librs_adreno_sha1.so
 
 # Graphics - SDM
--vendor/lib64/libsdm-disp-vndapis.so|8ac59a32a2601a8a4b0d3b097ed02f1279f3c6b7
 vendor/bin/hw/vendor.display.color@1.0-service
 vendor/bin/hw/vendor.qti.hardware.qdutils_disp@1.0-service-qti
 vendor/etc/init/vendor.display.color@1.0-service.rc
@@ -327,6 +326,9 @@ vendor/lib64/vendor.display.color@1.0.so
 vendor/lib64/vendor.display.color@1.1.so
 vendor/lib64/vendor.display.postproc@1.0.so
 vendor/lib64/vendor.qti.hardware.qdutils_disp@1.0.so
+
+# Graphics (SDM) - from jasmine V11.0.17.0.QDIMIXM
+vendor/lib64/libsdm-disp-vndapis.so|ba4978c373f9892d884d07c4cf25dba9d73fda1f
 
 # Keystore
 vendor/lib/hw/keystore.sdm660.so
