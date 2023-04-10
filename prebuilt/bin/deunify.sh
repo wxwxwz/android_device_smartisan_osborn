@@ -18,14 +18,14 @@
 if [ $(cat /sys/hwinfo/nfc_support) = "nfc_support=0" ]; then
   echo "NFC is not supported"
   rm -rf /system/system/priv-app/Tag
-  rm -rf /system/system/vendor/etc/*nfc*
-  rm -rf /system/system/vendor/bin/hw/vendor.nxp.hardware.nfc@2.0-service
-  rm -rf /system/system/vendor/etc/init/vendor.nxp.hardware.nfc@2.0-service.rc
-  rm -rf /system/system/vendor/lib/*nfc*
-  rm -rf /system/system/vendor/lib64/*nfc*
-  rm -rf /system/system/vendor/etc/permissions/android.hardware.nfc.hce.xml
-  rm -rf /system/system/vendor/etc/permissions/android.hardware.nfc.hcef.xml
-  rm -rf /system/system/vendor/etc/permissions/android.hardware.nfc.xml
-  rm -rf /system/system/vendor/etc/permissions/com.android.nfc_extras.xml
-  rm -rf /system/system/vendor/etc/permissions/com.nxp.mifare.xml
+  rm -rf /vendor/etc/*nfc*
+  rm -rf /vendor/bin/hw/vendor.nxp.hardware.nfc@2.0-service
+  rm -rf /vendor/etc/init/vendor.nxp.hardware.nfc@2.0-service.rc
+  rm -rf /vendor/lib/*nfc*
+  rm -rf /vendor/lib64/*nfc*
+  rm -rf /vendor/etc/permissions/android.hardware.nfc.hce.xml
+  rm -rf /vendor/etc/permissions/android.hardware.nfc.hcef.xml
+  rm -rf /vendor/etc/permissions/android.hardware.nfc.xml
+  rm -rf /vendor/etc/permissions/com.android.nfc_extras.xml
+  rm -rf /vendor/etc/permissions/com.nxp.mifare.xml
 fi

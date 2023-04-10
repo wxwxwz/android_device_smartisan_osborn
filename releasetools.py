@@ -52,5 +52,7 @@ def KillMagisk(info):
 
 def AddDeunifyScript(info):
   info.script.Mount("/system")
+  info.script.Mount("/vendor")
   info.script.AppendExtra('run_program("/tmp/install/bin/deunify.sh");')
   info.script.Unmount("/system")
+  info.script.Unmount("/vendor")

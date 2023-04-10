@@ -35,7 +35,8 @@ PRODUCT_PROPERTY_OVERRIDES += \
     persist.vendor.radio.custom_ecc=1 \
     persist.vendor.radio.sib16_support=1 \
     persist.vendor.radio.rat_on=combine \
-    persist.radio.schd.cache=3500
+    persist.radio.schd.cache=3500 \
+    vendor.rild.libpath=/vendor/lib64/libril-qc-qmi-1.so
 
 # Shutdown
 PRODUCT_PROPERTY_OVERRIDES += \
