@@ -27,7 +27,7 @@ on boot
     chown system system /proc/keypad/power
     chown system system /proc/keypad/shortcuts
 
-service ifaad /system/bin/ifaad
+service ifaad /vendor/bin/ifaad
     class late_start
     user  system
     group system

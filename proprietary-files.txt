@@ -431,13 +431,13 @@ lib64/libgf_hal.so:vendor/lib64/libgf_hal.so
 lib64/libgoodixfingerprintd_binder.so:vendor/lib64/libgoodixfingerprintd_binder.so
 
 # IFAA (Fingerprint support for Alipay)
--framework/ifaa_fw.jar
-bin/ifaad
-lib/libifaa_daemon.so
-lib/libifaa_jni.so
-lib64/lib_ifaa_tac.so
-lib64/libifaa_daemon.so
-lib64/libifaa_jni.so
+-framework/ifaa_fw.jar:vendor/framework/ifaa_fw.jar
+bin/ifaad:vendor/bin/ifaad
+lib/libifaa_daemon.so:vendor/lib/libifaa_daemon.so
+lib/libifaa_jni.so:vendor/lib/libifaa_jni.so
+lib64/lib_ifaa_tac.so:vendor/lib64/lib_ifaa_tac.so
+lib64/libifaa_daemon.so:vendor/lib64/libifaa_daemon.so
+lib64/libifaa_jni.so:vendor/lib64/libifaa_jni.so
 
 # Media firmware
 etc/firmware/DE.o.sdm660:vendor/firmware/DE.o.sdm660
