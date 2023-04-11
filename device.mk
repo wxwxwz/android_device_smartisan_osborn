@@ -159,6 +159,7 @@ PRODUCT_COPY_FILES += \
 
 PRODUCT_PACKAGES += \
     camera.sdm660 \
+    libgui_vendor \
     libmm-qcamera \
     libshim_camera \
     android.frameworks.displayservice@1.0_32 \

@@ -59,6 +59,10 @@ function blob_fixup() {
     product/lib64/libdpmframework.so)
         "${PATCHELF}" --add-needed "libshim_dpmframework.so" "${2}"
         ;;
+    vendor/lib/libmmcamera2_stats_modules.so)
+        "${PATCHELF}" --remove-needed "libandroid.so" "${2}"
+        "${PATCHELF}" --replace-needed "libgui.so" "libgui_vendor.so" "${2}"
+        ;;
     vendor/lib64/libwvhidl.so)
         "${PATCHELF}" --replace-needed "libprotobuf-cpp-lite.so" "libprotobuf-cpp-lite-v29.so" "${2}"
         ;;
