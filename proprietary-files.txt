@@ -182,7 +182,7 @@ vendor/lib/libmmcamera2_q3a_core.so
 vendor/lib/libmmcamera2_sensor_modules.so
 vendor/lib/libmmcamera2_stats_algorithm.so
 vendor/lib/libmmcamera2_stats_lib.so
-vendor/lib/libmmcamera2_stats_modules.so|e663b55a3d2c8c16b0495b025c277826b924b750
+vendor/lib/libmmcamera2_stats_modules.so|7e145fc05e91311c316e8847e10979702dedeef8
 vendor/lib/libSonyIMX386PdafLibrary.so
 vendor/lib/libmmjpeg.so
 vendor/lib/libmmqjpeg_codec.so

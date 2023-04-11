@@ -27,6 +27,24 @@ cc_library_shared {
 }
 
 cc_library_shared {
+    name: "libshim_mmcamera",
+    proprietary: true,
+    defaults: ["hidl_defaults"],
+    srcs: [
+        "mmcamera_shim.cpp",
+    ],
+    cflags: [
+        "-Werror",
+        "-Wextra",
+        "-Wall",
+    ],
+    shared_libs: [
+        "libutils",
+    ],
+    vendor: true,
+}
+
+cc_library_shared {
     name: "fpc_shim",
     srcs: ["fpc_shim.cpp"],
     shared_libs: [

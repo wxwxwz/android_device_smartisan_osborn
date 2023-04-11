@@ -162,6 +162,7 @@ PRODUCT_PACKAGES += \
     libgui_vendor \
     libmm-qcamera \
     libshim_camera \
+    libshim_mmcamera \
     android.frameworks.displayservice@1.0_32 \
     android.hardware.camera.provider@2.4-impl:32 \
     android.hardware.camera.provider@2.4-service
