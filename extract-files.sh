@@ -68,6 +68,9 @@ function blob_fixup() {
     vendor/lib64/hw/audio.primary.sdm660.so)
         "${PATCHELF}" --replace-needed "libcutils.so" "libprocessgroup.so" "${2}"
         ;;
+    vendor/lib/libmmcamera_ppeiscore.so)
+        "${PATCHELF}" --replace-needed "libgui.so" "libgui_vendor.so" "${2}"
+        ;;
     vendor/lib/libmmcamera2_stats_modules.so)
         "${PATCHELF}" --add-needed "libshim_mmcamera.so" "${2}"
         "${PATCHELF}" --remove-needed "libandroid.so" "${2}"
