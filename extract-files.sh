@@ -72,6 +72,9 @@ function blob_fixup() {
     vendor/lib64/libsettings.so)
         "${PATCHELF}" --replace-needed "libprotobuf-cpp-full.so" "libprotobuf-cpp-full-v29.so" "${2}"
         ;;
+    vendor/lib64/hw/fingerprint.fpc.so)
+        "${PATCHELF}" --add-needed "fpc_shim.so" "${2}"
+        ;;
     esac
 }
 

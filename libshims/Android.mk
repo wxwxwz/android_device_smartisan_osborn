@@ -26,6 +26,14 @@ LOCAL_VENDOR_MODULE := true
 include $(BUILD_SHARED_LIBRARY)
 
 include $(CLEAR_VARS)
+LOCAL_SRC_FILES := fpc_shim.cpp
+LOCAL_SHARED_LIBRARIES := libui libutils
+LOCAL_MODULE := fpc_shim
+LOCAL_MODULE_TAGS := optional
+LOCAL_VENDOR_MODULE := true
+include $(BUILD_SHARED_LIBRARY)
+
+include $(CLEAR_VARS)
 LOCAL_SRC_FILES := ims_shim.cpp
 LOCAL_C_INCLUDES := frameworks/native/include
 LOCAL_SHARED_LIBRARIES := libgui libui

@@ -215,7 +215,8 @@ PRODUCT_PACKAGES += \
 
 # Fingerprint feature
 PRODUCT_PACKAGES += \
-    android.hardware.biometrics.fingerprint@2.1-service.osborn
+    android.hardware.biometrics.fingerprint@2.1-service.osborn \
+    fpc_shim
 
 # fwk-detect
 PRODUCT_PACKAGES += \

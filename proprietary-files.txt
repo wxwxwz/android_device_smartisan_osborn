@@ -422,7 +422,7 @@ vendor/lib/libmmcamera_isp_snr47.so
 vendor/lib/libmmcamera_isp_sub_module.so
 
 # Fingerprint - FPC
-lib64/hw/fpcfingerprint.sdm660.so:vendor/lib64/hw/fingerprint.fpc.so
+lib64/hw/fpcfingerprint.sdm660.so:vendor/lib64/hw/fingerprint.fpc.so|b530f3e5962d606fe0a5e953e2b0cc33efa7fb9f
 
 # Fingerprint - Goodix
 lib64/hw/goodixfingerprint.default.so:vendor/lib64/hw/fingerprint.goodix.so
