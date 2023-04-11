@@ -249,10 +249,13 @@ PRODUCT_PACKAGES += \
 # HIDL
 PRODUCT_PACKAGES += \
     android.hidl.base@1.0 \
+    android.hidl.base@1.0.vendor \
     android.hidl.manager@1.0 \
     android.hidl.manager@1.0-java \
     libhidltransport \
-    libhwbinder
+    libhidltransport.vendor \
+    libhwbinder \
+    libhwbinder.vendor
 
 # Init
 PRODUCT_PACKAGES += \
@@ -379,7 +382,7 @@ PRODUCT_COPY_FILES += \
 # Power
 PRODUCT_PACKAGES += \
     android.hardware.power-service-qti \
-    vendor.qti.hardware.perf@1.0
+    vendor.qti.hardware.perf@1.0.vendor
 
 # Protobuf
 PRODUCT_PACKAGES += \
