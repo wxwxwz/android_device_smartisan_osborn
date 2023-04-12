@@ -230,6 +230,7 @@ PRODUCT_PACKAGES += \
 # Fingerprint feature
 PRODUCT_PACKAGES += \
     android.hardware.biometrics.fingerprint@2.1-service.osborn \
+    android.hardware.biometrics.fingerprint@2.1.vendor \
     fpc_shim
 
 # fwk-detect
@@ -245,6 +246,7 @@ PRODUCT_PACKAGES += \
 # GPS
 PRODUCT_PACKAGES += \
     android.hardware.gnss@1.0-impl-qti \
+    android.hardware.gnss@1.1.vendor \
     libgnss \
     libgnsspps \
     libgps.utils \
@@ -428,15 +430,16 @@ PRODUCT_PACKAGES += \
 # RIL
 PRODUCT_PACKAGES += \
     android.hardware.radio@1.0.vendor \
-    android.hardware.radio.config@1.0.vendor \
-    android.hardware.secure_element@1.0.vendor \
-    libshim_ims \
     android.hardware.radio@1.2 \
+    android.hardware.radio@1.2.vendor \
     android.hardware.radio.config@1.0 \
+    android.hardware.radio.config@1.0.vendor \
     android.hardware.radio.deprecated@1.0 \
     android.hardware.secure_element@1.0 \
+    android.hardware.secure_element@1.0.vendor \
     ims-ext-common \
     librmnetctl \
+    libshim_ims \
     libxml2 \
     libprotobuf-cpp-full
 
