@@ -112,10 +112,6 @@ PRODUCT_PROPERTY_OVERRIDES += \
     ro.surface_flinger.vsync_event_phase_offset_ns=2000000 \
     ro.surface_flinger.vsync_sf_event_phase_offset_ns=6000000
 
-# Headset
-PRODUCT_PROPERTY_OVERRIDES += \
-    ro.system.headsetinput=sdm660-snd-card-skush Button Jack
-
 # Hwui
 PRODUCT_PROPERTY_OVERRIDES += \
     ro.hwui.texture_cache_size=72 \
