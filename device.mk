@@ -144,9 +144,7 @@ PRODUCT_COPY_FILES += \
 
 # Bluetooth
 PRODUCT_PACKAGES += \
-    android.hardware.bluetooth.a2dp@1.0-impl \
-    bt-mac-generator \
-    libbthost_if
+    bt-mac-generator
 
 # Camera
 PRODUCT_COPY_FILES += \
@@ -154,7 +152,6 @@ PRODUCT_COPY_FILES += \
 
 PRODUCT_PACKAGES += \
     camera.sdm660 \
-    libmm-qcamera \
     libshim_camera \
     android.frameworks.displayservice@1.0_32 \
     android.hardware.camera.provider@2.4-impl:32 \
@@ -162,10 +159,7 @@ PRODUCT_PACKAGES += \
 
 # Connectivity Engine support (CNE)
 PRODUCT_PACKAGES += \
-    cneapiclient \
-    com.quicinc.cne \
     libwpa_client \
-    services-ext
 
 # Control groups and task profiles
 PRODUCT_COPY_FILES += \
@@ -177,24 +171,19 @@ PRODUCT_PACKAGES += \
     android.hardware.configstore@1.1-service \
     android.hardware.graphics.allocator@2.0-impl:64 \
     android.hardware.graphics.allocator@2.0-service \
-    android.hardware.graphics.composer@2.1-impl:64 \
     android.hardware.graphics.composer@2.1-service \
     android.hardware.graphics.mapper@2.0-impl \
     android.hardware.memtrack@1.0-impl \
     android.hardware.memtrack@1.0-service \
-    copybit.sdm660 \
     gralloc.sdm660 \
     hwcomposer.sdm660 \
     memtrack.sdm660 \
     libdisplayconfig \
     libhwc2on1adapter \
-    libgenlock \
-    liboverlay \
     libtinyxml \
     libqdMetaData \
     libqdMetaData.system \
-    vendor.display.config@1.1 \
-    vendor.display.config@1.1_vendor
+    vendor.display.config@1.1
 
 # DPM
 PRODUCT_PACKAGES += \
@@ -248,7 +237,6 @@ PRODUCT_PACKAGES += \
 PRODUCT_PACKAGES += \
     android.hidl.base@1.0 \
     android.hidl.manager@1.0 \
-    android.hidl.manager@1.0-java \
     libhidltransport \
     libhwbinder
 
@@ -256,8 +244,6 @@ PRODUCT_PACKAGES += \
 PRODUCT_PACKAGES += \
     fstab.qcom \
     init.class_main.sh \
-    init.crda.sh \
-    init.mdm.sh \
     init.qcom.sh \
     init.qcom.post_boot.sh \
     init.qcom.sensors.sh \
@@ -276,11 +262,6 @@ PRODUCT_PACKAGES += \
 PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/keylayout/gpio-keys.kl:$(TARGET_COPY_OUT_VENDOR)/usr/keylayout/gpio-keys.kl \
     $(LOCAL_PATH)/keylayout/qpnp_pon.kl:$(TARGET_COPY_OUT_VENDOR)/usr/keylayout/qpnp_pon.kl
-
-# IPv6
-PRODUCT_PACKAGES += \
-    ebtables \
-    ethertypes
 
 # IRQ
 PRODUCT_COPY_FILES += \
@@ -314,10 +295,6 @@ PRODUCT_PACKAGES += \
     logic_volume.recovery \
     logic_volume.conf.recovery
 
-# Low power Whitelist
-PRODUCT_PACKAGES += \
-    $(LOCAL_PATH)/configs/qti_whitelist.xml:system/etc/sysconfig/qti_whitelist.xml
-
 # Media
 PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/configs/media_codecs.xml:$(TARGET_COPY_OUT_VENDOR)/etc/media_codecs.xml \
@@ -336,21 +313,8 @@ PRODUCT_PACKAGES += \
     libandroid_net \
     netutils-wrapper-1.0
 
-# NFC
-PRODUCT_PACKAGES += \
-    nfc_nci.nqx.default.hw \
-    vendor.nxp.hardware.nfc@2.0-service
-
 PRODUCT_PACKAGES += \
     com.android.nfc_extras \
-    com.gsma.services.nfc \
-    com.nxp.nfc.nq \
-    libnqnfc-nci \
-    libnqnfc_nci_jni \
-    libnqp61-jcop-kit \
-    nqnfcee_access.xml \
-    nqnfcse_access.xml \
-    NQNfcNci \
     Tag
 
 PRODUCT_COPY_FILES += \
@@ -360,7 +324,6 @@ PRODUCT_COPY_FILES += \
 # OMX
 PRODUCT_PACKAGES += \
     libc2dcolorconvert \
-    libextmedia_jni \
     libhypv_intercept \
     libOmxAacEnc \
     libOmxAmrEnc \
@@ -386,13 +349,6 @@ PRODUCT_PACKAGES += \
 # Releasetools
 PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/prebuilt/bin/deunify.sh:install/bin/deunify.sh
-
-# RCS
-PRODUCT_PACKAGES += \
-    rcs_service_aidl \
-    rcs_service_aidl.xml \
-    rcs_service_api \
-    rcs_service_api.xml
 
 # RIL
 PRODUCT_PACKAGES += \
@@ -422,10 +378,6 @@ PRODUCT_BOOT_JARS += \
 PRODUCT_PACKAGES += \
     ipacm \
     IPACM_cfg.xml
-
-# TextClassifier smart selection model files
-PRODUCT_PACKAGES += \
-    textclassifier.bundle1
 
 # Trust
 PRODUCT_PACKAGES += \
@@ -465,8 +417,6 @@ PRODUCT_PACKAGES += \
     android.hardware.wifi@1.0-service \
     hostapd \
     hostapd_cli \
-    libqsap_sdk \
-    libQWiFiSoftApCfg \
     libwifi-hal-qcom \
     wificond \
     wpa_supplicant \
