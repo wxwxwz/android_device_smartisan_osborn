@@ -181,10 +181,6 @@ persist.debug.coresight.config=stm-events
 ##property to choose between virtual/external wfd display
 persist.sys.wfd.virtual=0
 
-# system prop for NFC DT
-ro.nfc.port=I2C
-ro.hardware.nfc_nci=nqx.default
-
 #property for vendor specific library
 ro.vendor.at_library=libqti-at.so
 
@@ -294,9 +290,6 @@ persist.radio.bar_fake_gcell=true
 # 2017-09-13 hubin:added. M0186977
 persist.radio.facnotsup_as_nonw=1
 # SMARTISAN_END (CCM5012:RIL CLIR RETURN)
-
-#nfc fw update not allowed by default
-persist.fw.update.allowed=0
 
 # CA config
 ro.radio.ca.enable=true
