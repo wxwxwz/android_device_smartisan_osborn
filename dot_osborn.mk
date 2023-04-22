@@ -22,11 +22,13 @@ $(call inherit-product, $(SRC_TARGET_DIR)/product/product_launched_with_n_mr1.mk
 # Inherit from osborn device
 $(call inherit-product, device/smartisan/osborn/device.mk)
 
-# Inherit some common LineageOS stuff.
-$(call inherit-product, vendor/lineage/config/common_full_phone.mk)
+# Inherit some common DotOS stuff.
+TARGET_BOOT_ANIMATION_RES := 1080
+TARGET_FACE_UNLOCK_SUPPORTED := true
+$(call inherit-product, vendor/dot/config/common.mk)
 
 # Device identifier. This must come after all inclusions.
-PRODUCT_NAME := lineage_osborn
+PRODUCT_NAME := dot_osborn
 PRODUCT_BRAND := SMARTISAN
 PRODUCT_DEVICE := osborn
 PRODUCT_MANUFACTURER := smartisan
