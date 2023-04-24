@@ -254,9 +254,6 @@ PRODUCT_PACKAGES += \
 # Init
 PRODUCT_PACKAGES += \
     fstab.qcom \
-    init.class_main.sh \
-    init.crda.sh \
-    init.mdm.sh \
     init.qcom.sh \
     init.qcom.post_boot.sh \
     init.qcom.sensors.sh \

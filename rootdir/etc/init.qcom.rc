@@ -390,6 +390,9 @@ on post-fs-data
     #Create dir for TUI
     mkdir /data/vendor/tui 0700 system system
 
+    start vendor.qcrild
+    start vendor.qcrild2
+
     #Start move time data to /data/vendor once post-fs-data done
     start vendor.move_time_data
 
@@ -436,17 +439,8 @@ on property:persist.debug.trace=1
 on property:ro.bluetooth.ftm_enabled=true
     start ftmd
 
-service qcom-c_main-sh /vendor/bin/init.class_main.sh
-    class main
-    user root
-    oneshot
-
 on property:vold.decrypt=trigger_restart_framework
-    start qcom-c_main-sh
     start wcnss-service
-
-on property:persist.env.fastdorm.enabled=true
-    setprop persist.radio.data_no_toggle 1
 
 service vendor.cnd /vendor/bin/cnd
     class main
@@ -498,25 +492,21 @@ service vendor.port-bridge /vendor/bin/port-bridge
     class main
     user radio
     group radio system inet
-    disabled
     oneshot
 
 service vendor.netmgrd /vendor/bin/netmgrd
     class main
-    disabled
 
 service vendor.ipacm-diag /vendor/bin/ipacm-diag
     class main
     user radio
     socket ipacm_log_file dgram 660 radio radio
     group radio diag oem_2901
-    disabled
 
 service vendor.dataqti /vendor/bin/qti
     class main
     user radio
     group radio oem_2901 diag usb net_admin
-    disabled
 
 service vendor.sensors.qti /vendor/bin/sensors.qti
     class core
@@ -659,13 +649,6 @@ service vendor.wigig_hostapd /vendor/bin/hostapd -dd /data/vendor/wifi/wigig_hos
 on property:ro.data.large_tcp_window_size=true
     # Adjust socket buffer to enlarge TCP receive window for high bandwidth (e.g. DO-RevB)
     write /proc/sys/net/ipv4/tcp_adv_win_scale  2
-
-service vendor.ril-daemon2 /vendor/bin/hw/rild -c 2
-    class main
-    user radio
-    disabled
-    group radio cache inet misc audio sdcard_r sdcard_rw diag log
-    capabilities BLOCK_SUSPEND NET_ADMIN NET_RAW
 
 service vendor.ril-daemon3 /vendor/bin/hw/rild -c 3
     class main
