@@ -10,9 +10,9 @@
 /bt_firmware					u:object_r:bt_firmware_file:s0
 
 # HALs
-/(vendor|system/vendor)/bin/hw/android\.hardware\.light@2\.0-service\.smartisan                       u:object_r:hal_light_default_exec:s0
-/(vendor|system/vendor)/bin/hw/android\.hardware\.biometrics\.fingerprint@2\.1-service\.smartisan     u:object_r:hal_fingerprint_smartisan_exec:s0
-/(vendor|system/vendor)/bin/hw/android\.hardware\.drm@1\.2-service.widevine                           u:object_r:hal_drm_widevine_exec:s0
+/(vendor|system/vendor)/bin/hw/android\.hardware\.light@2\.0-service\.osborn                          u:object_r:hal_light_default_exec:s0
+/(vendor|system/vendor)/bin/hw/android\.hardware\.biometrics\.fingerprint@2\.1-service\.osborn        u:object_r:hal_fingerprint_smartisan_exec:s0
+/(vendor|system/vendor)/bin/hw/android\.hardware\.drm@1\.1-service.widevine                           u:object_r:hal_drm_widevine_exec:s0
 
 # Logic volume
 /(vendor|system/vendor)/bin/dm-tool		u:object_r:logic_volume_exec:s0
